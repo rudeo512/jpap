@@ -1,11 +1,12 @@
 package me.caru.jpa;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,15 +23,10 @@ import me.caru.jpa.core.team.Team;
 public class JpaApplication {
 	private final EntityManager entityManager;
 
-	@Transactional
 	@GetMapping("/")
-	public String home() {
-		Member member = entityManager.find(Member.class, 1L);
-		Team team = member.getTeam();
-		Team team1 = entityManager.find(Team.class, 1L);
-		log.info("===={}", team == team1);
-
-		return "home";
+	public List<Member> home() {
+		Team team = entityManager.find(Team.class, 1L);
+		return team.getMembers();
 	}
 
 	public static void main(String[] args) {
