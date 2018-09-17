@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import me.caru.jpa.core.DateSuper;
-import me.caru.jpa.core.Item;
+import me.caru.jpa.core.item.Item;
 import me.caru.jpa.core.order.Order;
 
 /**
@@ -31,7 +31,7 @@ public class OrderItem extends DateSuper {
 	private Long id;
 
 	@ManyToOne
-	private Item ite;
+	private Item item;
 
 	@ManyToOne
 	private Order order;

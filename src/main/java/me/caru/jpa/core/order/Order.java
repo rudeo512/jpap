@@ -1,5 +1,8 @@
 package me.caru.jpa.core.order;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -7,12 +10,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import me.caru.jpa.core.DateSuper;
 import me.caru.jpa.core.member.Member;
+import me.caru.jpa.core.oderitem.OrderItem;
 
 /**
  * Order
@@ -30,9 +35,20 @@ public class Order extends DateSuper {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Enumerated(EnumType.STRING)
+	private OrderStatus status;
+
 	@ManyToOne
 	private Member member;
 
-	@Enumerated(EnumType.STRING)
-	private OrderStatus status;
+	@OneToMany(mappedBy = "order")
+	public List<OrderItem> orderItems = new ArrayList<>();
+
+	public void setMember(Member member) {
+		if (this.member != null) {
+			this.member.getOrders().remove(this);
+		}
+		this.member = member;
+		member.getOrders().add(this);
+	}
 }

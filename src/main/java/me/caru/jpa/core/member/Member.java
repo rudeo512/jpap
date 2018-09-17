@@ -1,10 +1,14 @@
 package me.caru.jpa.core.member;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -14,6 +18,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import me.caru.jpa.core.DateSuper;
+import me.caru.jpa.core.order.Order;
 import me.caru.jpa.core.team.Team;
 
 /**
@@ -41,6 +46,9 @@ public class Member extends DateSuper {
 	private String city;
 	private String street;
 	private String zipcode;
+
+	@OneToMany(mappedBy = "member")
+	private List<Order> orders = new ArrayList<>();
 
 	@ManyToOne(optional = false)
 	private Team team;

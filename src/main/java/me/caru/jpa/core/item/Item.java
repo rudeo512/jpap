@@ -1,4 +1,4 @@
-package me.caru.jpa.core;
+package me.caru.jpa.core.item;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +8,7 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import me.caru.jpa.core.DateSuper;
 
 /**
  * Item
@@ -20,7 +21,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_item")
-public class Item {
+public class Item extends DateSuper {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

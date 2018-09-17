@@ -13,6 +13,7 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: true
+        dialect: org.hibernate.dialect.MySQL5Dialect
 
 logging:
   level:
