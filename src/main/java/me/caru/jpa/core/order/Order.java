@@ -11,11 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import me.caru.jpa.core.DateSuper;
+import me.caru.jpa.core.order.delivery.Delivery;
 import me.caru.jpa.core.member.Member;
 import me.caru.jpa.core.oderitem.OrderItem;
 
@@ -27,6 +30,7 @@ import me.caru.jpa.core.oderitem.OrderItem;
  * @since 2018. 09. 13.
  */
 @Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_order")
@@ -43,6 +47,9 @@ public class Order extends DateSuper {
 
 	@OneToMany(mappedBy = "order")
 	public List<OrderItem> orderItems = new ArrayList<>();
+
+	@OneToOne(mappedBy = "order")
+	private Delivery delivery;
 
 	public void setMember(Member member) {
 		if (this.member != null) {

@@ -1,4 +1,4 @@
-package me.caru.jpa.core.item;
+package me.caru.jpa.core.category;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,29 +12,27 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import me.caru.jpa.core.DateSuper;
 import me.caru.jpa.core.categoryitem.CategoryItem;
 
 /**
- * Item
+ * Category
  *
  * @author kyungdae.cho
  * @version 1.0.0
- * @since 2018. 09. 13.
+ * @since 2018. 09. 17.
  */
+
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "tb_item")
-public class Item extends DateSuper {
+@Table(name = "tb_category")
+public class Category {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
 	private String name;
-	private Integer price;
-	private Integer stockQuantity;
 
-	@OneToMany(mappedBy = "item")
+	@OneToMany(mappedBy = "category")
 	private List<CategoryItem> categoryItems = new ArrayList<>();
 }
