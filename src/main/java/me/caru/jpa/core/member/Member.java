@@ -17,7 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import me.caru.jpa.core.DateSuper;
+import me.caru.jpa.core.BaseEntity;
 import me.caru.jpa.core.order.Order;
 import me.caru.jpa.core.team.Team;
 
@@ -38,7 +38,7 @@ import me.caru.jpa.core.team.Team;
 @JsonIdentityInfo(
 	generator = ObjectIdGenerators.PropertyGenerator.class,
 	property = "id")
-public class Member extends DateSuper {
+public class Member extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

@@ -11,6 +11,7 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import me.caru.jpa.core.BaseEntity;
 import me.caru.jpa.core.order.Order;
 
 /**
@@ -25,7 +26,7 @@ import me.caru.jpa.core.order.Order;
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_delivery")
-public class Delivery {
+public class Delivery extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

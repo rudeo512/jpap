@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import me.caru.jpa.core.BaseEntity;
 import me.caru.jpa.core.category.Category;
 import me.caru.jpa.core.item.Item;
 
@@ -26,7 +27,7 @@ import me.caru.jpa.core.item.Item;
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_category_item")
-public class CategoryItem {
+public class CategoryItem extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

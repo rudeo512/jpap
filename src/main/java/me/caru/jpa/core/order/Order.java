@@ -17,10 +17,10 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import me.caru.jpa.core.DateSuper;
-import me.caru.jpa.core.order.delivery.Delivery;
+import me.caru.jpa.core.BaseEntity;
 import me.caru.jpa.core.member.Member;
 import me.caru.jpa.core.oderitem.OrderItem;
+import me.caru.jpa.core.order.delivery.Delivery;
 
 /**
  * Order
@@ -34,7 +34,7 @@ import me.caru.jpa.core.oderitem.OrderItem;
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_order")
-public class Order extends DateSuper {
+public class Order extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

@@ -16,6 +16,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import me.caru.jpa.core.BaseEntity;
 import me.caru.jpa.core.member.Member;
 
 /**
@@ -32,7 +33,7 @@ import me.caru.jpa.core.member.Member;
 @Entity
 @Table(name = "tb_team")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Team {
+public class Team extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

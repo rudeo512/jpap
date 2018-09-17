@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import me.caru.jpa.core.DateSuper;
+import me.caru.jpa.core.BaseEntity;
 import me.caru.jpa.core.item.Item;
 import me.caru.jpa.core.order.Order;
 
@@ -25,7 +25,7 @@ import me.caru.jpa.core.order.Order;
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_order_item")
-public class OrderItem extends DateSuper {
+public class OrderItem extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
