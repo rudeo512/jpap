@@ -11,6 +11,7 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import me.caru.jpa.core.BaseEntity;
 import me.caru.jpa.core.order.Order;
 
@@ -22,6 +23,7 @@ import me.caru.jpa.core.order.Order;
  * @since 2018. 09. 17.
  */
 
+@Setter
 @Getter
 @NoArgsConstructor
 @Entity
@@ -41,9 +43,4 @@ public class Delivery extends BaseEntity {
 
 	@OneToOne
 	private Order order;
-
-	public void setOrder(Order order) {
-		this.order = order;
-		order.setDelivery(this);
-	}
 }

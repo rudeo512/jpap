@@ -1,6 +1,7 @@
 package me.caru.jpa.core.oderitem;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,6 +10,7 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import me.caru.jpa.core.BaseEntity;
 import me.caru.jpa.core.item.Item;
 import me.caru.jpa.core.order.Order;
@@ -21,6 +23,7 @@ import me.caru.jpa.core.order.Order;
  * @since 2018. 09. 13.
  */
 
+@Setter
 @Getter
 @NoArgsConstructor
 @Entity
@@ -30,10 +33,10 @@ public class OrderItem extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Item item;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Order order;
 
 	private Integer orderPrice;
