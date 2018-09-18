@@ -1,5 +1,7 @@
 package me.caru.jpa;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.springframework.boot.SpringApplication;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.caru.jpa.core.member.Member;
+import me.caru.jpa.core.order.Order;
 
 @RestController
 @SpringBootApplication
@@ -21,8 +24,12 @@ public class JpaApplication {
 	private final EntityManager entityManager;
 
 	@GetMapping("/")
-	public Member home() {
-		return entityManager.find(Member.class, 1L);
+	public String home() {
+		Member member = entityManager.find(Member.class, 1L);
+		member.getTeam();
+		List<Order> orders = member.getOrders();
+		log.info("1111 ={}", orders.getClass().getName());
+		return "";
 	}
 
 	public static void main(String[] args) {
