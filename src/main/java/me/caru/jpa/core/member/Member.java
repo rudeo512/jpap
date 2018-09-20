@@ -3,6 +3,7 @@ package me.caru.jpa.core.member;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +19,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import me.caru.jpa.core.BaseEntity;
+import me.caru.jpa.core.address.Address;
 import me.caru.jpa.core.order.Order;
 import me.caru.jpa.core.team.Team;
 
@@ -43,9 +45,9 @@ public class Member extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private String city;
-	private String street;
-	private String zipcode;
+
+	@Embedded
+	private Address address;
 
 	@OneToMany(mappedBy = "member")
 	private List<Order> orders = new ArrayList<>();

@@ -1,5 +1,6 @@
 package me.caru.jpa.core.order.delivery;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -13,6 +14,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import me.caru.jpa.core.BaseEntity;
+import me.caru.jpa.core.address.Address;
 import me.caru.jpa.core.order.Order;
 
 /**
@@ -34,9 +36,8 @@ public class Delivery extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String city;
-	private String street;
-	private String zipcode;
+	@Embedded
+	private Address address;
 
 	@Enumerated(EnumType.STRING)
 	private DeliveryStatus status;
