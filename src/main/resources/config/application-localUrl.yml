@@ -1,0 +1,5 @@
+spring:
+  profiles: localUrl
+
+url:
+  a: "ddd"
