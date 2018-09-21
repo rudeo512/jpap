@@ -1,5 +1,5 @@
 spring:
-  profiles: local
+  profiles: dev
   datasource:
     url: jdbc:mysql://localhost:13306/jpa
     username: caru

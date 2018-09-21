@@ -19,10 +19,15 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Ar implements ApplicationRunner {
 	@Value("${url.a}")
-	private String a;
+	private String url;
+
+	@Value("${message.a}")
+	private String message;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		log.info("a == {}", a);
+		log.info("url == {}", url);
+		log.info("message == {}", message);
+
 	}
 }
