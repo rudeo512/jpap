@@ -33,7 +33,6 @@ public class JpaApplication {
 	}
 
 	public static void main(String[] args) {
-
 		SpringApplication springApplication = new SpringApplication(JpaApplication.class);
 		springApplication.run(args);
 	}

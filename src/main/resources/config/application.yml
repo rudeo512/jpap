@@ -7,3 +7,6 @@ spring:
   jackson:
     serialization:
       fail-on-empty-beans: false
+
+logging:
+  config: classpath:logback/logback-spring.xml

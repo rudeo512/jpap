@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProfile name="local">
+        <property name="FILE_LOG_ROOT" value="${FILE_LOG_ROOT:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}"/>
+        <include resource="logback/logback-appender.xml"/>
+
+        <logger name="org.hibernate.SQL" level="DEBUG"/>
+        <logger name="org.hibernate.type.descriptor.sql" level="TRACE"/>
+
+        <root level="info">
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="dev">
+        <property name="FILE_LOG_ROOT" value="./logs"/>
+        <include resource="logback/logback-appender.xml"/>
+
+        <logger name="org.hibernate.SQL" level="DEBUG"/>
+        <logger name="org.hibernate.type.descriptor.sql" level="TRACE"/>
+
+        <root level="info">
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="FILE"/>
+        </root>
+    </springProfile>
+</configuration>

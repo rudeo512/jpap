@@ -6,7 +6,7 @@ spring:
     password: rudeo512
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     properties:
       hibernate:
         format_sql: true
@@ -14,8 +14,3 @@ spring:
           lob:
             non_contextual_creation: true
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-logging:
-  level:
-    root: info
-    org.hibernate.SQL: debug
-    org.hibernate.type.descriptor.sql: trace

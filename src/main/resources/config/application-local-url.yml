@@ -1,5 +1,2 @@
-spring:
-  profiles: local
-
 url:
   a: "local.naver.com"
