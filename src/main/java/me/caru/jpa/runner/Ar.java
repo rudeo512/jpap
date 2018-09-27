@@ -1,4 +1,4 @@
-package me.caru.jpa;
+package me.caru.jpa.runner;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;

@@ -1,2 +1,5 @@
+spring:
+  profiles: dev
+
 url:
   a: "dev.naver.com"

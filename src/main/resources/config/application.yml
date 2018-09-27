@@ -2,8 +2,10 @@ spring:
   profiles:
     active: local
     include:
-      - ${spring.profiles.active}-url
-      - ${spring.profiles.active}-message
+    - local-url
+    - dev-url
+    - local-message
+    - dev-message
   jackson:
     serialization:
       fail-on-empty-beans: false

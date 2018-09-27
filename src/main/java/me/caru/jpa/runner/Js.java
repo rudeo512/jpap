@@ -1,4 +1,4 @@
-package me.caru.jpa;
+package me.caru.jpa.runner;
 
 import java.util.List;
 
