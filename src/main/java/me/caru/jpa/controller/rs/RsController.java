@@ -1,8 +1,11 @@
 package me.caru.jpa.controller.rs;
 
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.hateoas.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,9 +28,11 @@ public class RsController {
 	private final RsService rsService;
 
 	@GetMapping("/hello")
-	public String hello() {
+	public Resource<String> hello() {
 		log.info("caru512");
-		return "hello " + rsService.getName();
+		Resource<String> stringResource = new Resource<>("hello " + rsService.getName());
+		stringResource.add(linkTo(methodOn(RsController.class).hello()).withSelfRel());
+		return stringResource;
 	}
 
 	@PostMapping("/hello")
