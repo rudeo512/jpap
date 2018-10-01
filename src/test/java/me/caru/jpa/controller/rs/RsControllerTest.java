@@ -10,8 +10,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import me.caru.jpa.controller.rs.RsController;
-import me.caru.jpa.controller.rs.RsService;
 import me.caru.jpa.test.MyTest;
 
 /**
