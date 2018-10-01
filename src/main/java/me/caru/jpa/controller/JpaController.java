@@ -25,7 +25,7 @@ import me.caru.jpa.core.order.Order;
 public class JpaController {
 	private final EntityManager entityManager;
 
-	@GetMapping("/")
+	@GetMapping("/home")
 	public String home() {
 		Member member = entityManager.find(Member.class, 1L);
 		member.getTeam();

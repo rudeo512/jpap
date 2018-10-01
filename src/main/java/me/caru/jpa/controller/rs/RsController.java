@@ -1,6 +1,10 @@
 package me.caru.jpa.controller.rs;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
@@ -22,6 +26,15 @@ public class RsController {
 
 	@GetMapping("/hello")
 	public String hello() {
+		log.info("caru512");
 		return "hello " + rsService.getName();
+	}
+
+	@PostMapping("/hello")
+	public Map map() {
+		Map map = new HashMap();
+		map.put("a", "a");
+		map.put("b", "b");
+		return map;
 	}
 }
