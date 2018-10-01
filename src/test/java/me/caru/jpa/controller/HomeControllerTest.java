@@ -6,11 +6,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+
+import me.caru.jpa.test.MyTest;
 
 /**
  * HomeControllerTest
@@ -19,10 +19,9 @@ import org.springframework.test.web.servlet.MockMvc;
  * @version 1.0.0
  * @since 2018. 10. 01.
  */
-@RunWith(SpringRunner.class)
 @WebMvcTest(HomeController.class)
-public class HomeControllerTest {
-
+public class HomeControllerTest extends MyTest {
+	
 	@Autowired
 	private MockMvc mockMvc;
 
