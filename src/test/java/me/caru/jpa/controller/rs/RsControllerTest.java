@@ -1,6 +1,7 @@
 package me.caru.jpa.controller.rs;
 
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -16,8 +17,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.rule.OutputCapture;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import me.caru.jpa.test.MyTest;
 
@@ -44,8 +43,8 @@ public class RsControllerTest extends MyTest {
 	public void hello() throws Exception {
 		when(rsService.getName()).thenReturn("rudeo");
 
-		mockMvc.perform(MockMvcRequestBuilders.get("/hello"))
-			.andExpect(MockMvcResultMatchers.content().string("hello rudeo"))
+		mockMvc.perform(get("/hello"))
+			.andExpect(content().string(containsString("hello rudeo")))
 			.andExpect(status().isOk());
 
 		Assertions.assertThat(outputCapture.toString()).contains("caru512");
