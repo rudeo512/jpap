@@ -14,12 +14,10 @@ import com.querydsl.jpa.impl.JPAQuery;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.caru.jpa.core.address.Address;
-import me.caru.jpa.core.member.Member;
 import me.caru.jpa.core.member.QMember;
 import me.caru.jpa.core.oderitem.OrderItem;
 import me.caru.jpa.core.order.Order;
 import me.caru.jpa.core.order.delivery.Delivery;
-import me.caru.jpa.core.team.Team;
 
 /**
  * Js
@@ -37,16 +35,6 @@ public class Js implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		Team team = new Team("team1");
-		entityManager.persist(team);
-
-		Member member1 = new Member("caru1");
-		member1.setTeam(team);
-		entityManager.persist(member1);
-
-		Member member2 = new Member("caru2");
-		member2.setTeam(team);
-		entityManager.persist(member2);
 
 		//////
 		Delivery delivery = new Delivery();
@@ -59,10 +47,6 @@ public class Js implements ApplicationRunner {
 		order.addOrderItem(orderItem2);
 
 		entityManager.persist(order);
-
-		List<Team> teams = entityManager.createQuery("select distinct m.team from Member m", Team.class)
-			.getResultList();
-		teams.stream().forEach(team1 -> log.info("team =={}", team1));
 
 		List<Address> addresses = entityManager.createQuery("select m.address from Member m where m.name=:name", Address.class)
 			.setParameter("name", "caru1")

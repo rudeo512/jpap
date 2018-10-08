@@ -28,7 +28,6 @@ public class JpaController {
 	@GetMapping("/home")
 	public String home() {
 		Member member = entityManager.find(Member.class, 1L);
-		member.getTeam();
 		List<Order> orders = member.getOrders();
 		log.info("1111 ={}", orders.getClass().getName());
 		return "home";
