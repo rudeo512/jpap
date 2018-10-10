@@ -3,6 +3,7 @@ package me.caru.jpa.core.member;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -32,6 +33,7 @@ import me.caru.jpa.core.order.Order;
 @Table(name = "tb_member")
 public class Member extends BaseEntity {
 
+	@Column(unique = true)
 	private String name;
 
 	@Embedded
