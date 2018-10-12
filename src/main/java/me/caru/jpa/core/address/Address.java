@@ -2,8 +2,10 @@ package me.caru.jpa.core.address;
 
 import javax.persistence.Embeddable;
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /**
  * Address
@@ -16,6 +18,8 @@ import lombok.Getter;
 @Embeddable
 @Getter
 @EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 public class Address {
 	private String city;
 	private String street;

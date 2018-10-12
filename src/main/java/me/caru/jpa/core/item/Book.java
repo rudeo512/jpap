@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * Book
@@ -18,6 +19,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @DiscriminatorValue("B")
+@Setter
 public class Book extends Item {
 	private String author;
 	private String isbn;

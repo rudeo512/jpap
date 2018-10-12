@@ -1,6 +1,7 @@
 package me.caru.jpa.core.order;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -20,6 +21,7 @@ import me.caru.jpa.core.BaseEntity;
 import me.caru.jpa.core.member.Member;
 import me.caru.jpa.core.oderitem.OrderItem;
 import me.caru.jpa.core.order.delivery.Delivery;
+import me.caru.jpa.core.order.delivery.DeliveryStatus;
 
 /**
  * Order
@@ -63,5 +65,32 @@ public class Order extends BaseEntity {
 	public void setDelivery(Delivery delivery) {
 		this.delivery = delivery;
 		delivery.setOrder(this);
+	}
+
+
+	/*
+	비지니스 로직
+	 */
+
+	public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems) {
+		Order order = new Order();
+		order.setMember(member);
+		order.setDelivery(delivery);
+		Arrays.stream(orderItems).forEach(order::addOrderItem);
+		order.setStatus(OrderStatus.ORDER);
+		return order;
+	}
+
+	public void cancel() {
+		if (delivery.getStatus() == DeliveryStatus.COMP) {
+			throw new RuntimeException("이미 배송이 완료된 상품은 취소가 불가능합니다.");
+		}
+
+		this.setStatus(OrderStatus.CANCEL);
+		orderItems.stream().forEach(OrderItem::cancel);
+	}
+
+	public Integer getTotalPrice() {
+		return orderItems.stream().reduce(0, (sum, orderItem) -> sum += orderItem.getTotalPrice(), (sum1, sum2) -> sum1 + sum2);
 	}
 }
