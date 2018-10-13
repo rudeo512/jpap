@@ -1,5 +1,2 @@
-spring:
-  profiles: dev
-
 message:
   a: "dev message"

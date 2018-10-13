@@ -1,5 +1,2 @@
-spring:
-  profiles: local
-
 message:
   a: "local message"
