@@ -12,8 +12,10 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import me.caru.jpa.core.BaseEntity;
 import me.caru.jpa.core.categoryitem.CategoryItem;
+import me.caru.jpa.core.exception.NotEnoughStockException;
 
 /**
  * Item
@@ -23,6 +25,7 @@ import me.caru.jpa.core.categoryitem.CategoryItem;
  * @since 2018. 09. 13.
  */
 @Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_item")
@@ -36,4 +39,17 @@ public abstract class Item extends BaseEntity {
 
 	@OneToMany(mappedBy = "item")
 	private List<CategoryItem> categoryItems = new ArrayList<>();
+
+	public void addStock(Integer quantity) {
+		this.stockQuantity += quantity;
+	}
+
+	public void removeStock(Integer quantity) {
+		Integer restStock = this.stockQuantity - quantity;
+		if (restStock < 0) {
+			throw new NotEnoughStockException("need more stock");
+		}
+
+		this.stockQuantity = restStock;
+	}
 }

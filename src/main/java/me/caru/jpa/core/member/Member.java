@@ -3,9 +3,9 @@ package me.caru.jpa.core.member;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -16,7 +16,6 @@ import lombok.Setter;
 import me.caru.jpa.core.BaseEntity;
 import me.caru.jpa.core.address.Address;
 import me.caru.jpa.core.order.Order;
-import me.caru.jpa.core.team.Team;
 
 /**
  * Member
@@ -34,6 +33,7 @@ import me.caru.jpa.core.team.Team;
 @Table(name = "tb_member")
 public class Member extends BaseEntity {
 
+	@Column(unique = true)
 	private String name;
 
 	@Embedded
@@ -42,27 +42,7 @@ public class Member extends BaseEntity {
 	@OneToMany(mappedBy = "member")
 	private List<Order> orders = new ArrayList<>();
 
-	@ManyToOne(optional = false)
-	private Team team;
-
 	public Member(String name) {
 		this.name = name;
-	}
-
-	public void setTeam(Team team) {
-		if (this.team != null) {
-			this.team.getMembers().remove(this);
-		}
-		this.team = team;
-		team.getMembers().add(this);
-	}
-
-	@Override
-	public String toString() {
-		return "Member{" +
-			"id=" + getId() +
-			", name='" + name + '\'' +
-			", address=" + address +
-			'}';
 	}
 }
