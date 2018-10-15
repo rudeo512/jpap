@@ -30,7 +30,7 @@ public class OrderService {
 
 	@Transactional(readOnly = false)
 	public Long order(Long memberId, Long itemId, int count) {
-		Member member = memberRepository.findOne(memberId);
+		Member member = memberRepository.getOne(memberId);
 		Item item = itemService.findOne(itemId);
 
 		Delivery delivery = new Delivery(member.getAddress());
@@ -42,11 +42,11 @@ public class OrderService {
 	}
 
 	public void cancelOrder(Long orderId) {
-		Order order = orderRepository.findOne(orderId);
+		Order order = orderRepository.getOne(orderId);
 		order.cancel();
 	}
 
 	public List<Order> findOrders(OrderSearch orderSearch) {
-		return orderRepository.findAll(orderSearch);
+		return orderRepository.findAll(orderSearch.toSpecification());
 	}
 }

@@ -1,5 +1,10 @@
 package me.caru.jpa.core.order;
 
+import static me.caru.jpa.core.order.OrderSpec.*;
+import static org.springframework.data.jpa.domain.Specification.*;
+
+import org.springframework.data.jpa.domain.Specification;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -16,4 +21,8 @@ import lombok.Getter;
 public class OrderSearch {
 	private String memberName;
 	private OrderStatus orderStatus;
+
+	public Specification<Order> toSpecification() {
+		return where(memberNameLike(memberName)).and(orderStatusEq(orderStatus));
+	}
 }

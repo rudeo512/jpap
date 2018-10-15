@@ -26,7 +26,7 @@ public class MemberService {
 	@Transactional(readOnly = false)
 	public Long join(Member member) {
 		validateDuplicationMember(member);
-		return memberRepository.save(member);
+		return memberRepository.save(member).getId();
 	}
 
 	public List<Member> findMembers() {
@@ -34,7 +34,7 @@ public class MemberService {
 	}
 
 	public Member findOne(Long memberId) {
-		return memberRepository.findOne(memberId);
+		return memberRepository.getOne(memberId);
 	}
 
 	private void validateDuplicationMember(Member member) {
